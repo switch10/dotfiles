@@ -1,0 +1,86 @@
+background yes
+skip_pager
+use_xft yes
+xftfont Sans:size=13
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_class Conky
+own_window_transparent yes
+own_window_type extralight
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual yes
+double_buffer yes
+minimum_size 200 200
+maximum_width 1000
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color white
+default_shade_color black
+default_outline_color white
+alignment top_right
+gap_x 12
+gap_y 5
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+
+default_color FFFFFF
+
+color1 FFFFFF
+color2 FFFFFF
+color3 FFFFFF
+color4 FFFFFF
+color5 FFFFFF
+color6 FFFFFF
+color7 FFFFFF
+
+TEXT
+${color FFFFFF}${font Raleway:normal:size=13:}SYSTEM ${hr 1}
+${color FFFFFF}${font Raleway:light:size=13}$sysname $kernel $alignr $machine
+Host:$alignr$nodename
+Uptime:$alignr$uptime
+File System: $alignr${fs_type}
+
+${font Raleway:normal:size=13}${color FFFFFF}PROCESSORS ${hr 1}${font Raleway:light:size=13}${color FFFFFF}
+CPU0: ${cpu cpu0}% ${cpubar cpu0}
+CPU1: ${cpu cpu1}% ${cpubar cpu1}
+CPU2: ${cpu cpu2}% ${cpubar cpu2}
+CPU3: ${cpu cpu3}% ${cpubar cpu3}
+
+${font Raleway:normal:size=13}${color FFFFFF}MEMORY ${hr 1}
+${font Raleway:light:size=13}${color FFFFFF}RAM $alignc $mem / $memmax $alignr $memperc%
+$membar
+
+${font Raleway:normal:size=13}${color FFFFFF}DISKS ${hr 1} 
+${font Raleway:light:size=13}${color FFFFFF}Root $alignc ${fs_used /} / ${fs_size /} $alignr${fs_used_perc /}%
+${fs_bar /}
+Home $alignc ${fs_used /home/dave} / ${fs_size /home/dave} $alignr ${fs_used_perc /home/dave}%
+${fs_bar /home/dave}
+NAS $alignc ${fs_used /media/nas} / ${fs_size /media/nas} $alignr ${fs_used_perc /media/nas}%
+${fs_bar /media/nas}
+
+${font Raleway:normal:size=13}${color FFFFFF}TOP PROCESSES ${hr 1}
+${font Raleway:light:size=13}${color FFFFFF}${top_mem name 1}${alignr}${top mem 1} %
+${top_mem name 2}${alignr}${top mem 2} %
+${font Raleway:light:size=13}${top_mem name 3}${alignr}${top mem 3} %
+${font Raleway:light:size=13}${top_mem name 4}${alignr}${top mem 4} %
+${font Raleway:light:size=13}${top_mem name 5}${alignr}${top mem 5} %
+
+${font Raleway:normal:size=13}${color FFFFFF}NETWORK ${hr 1}
+${font Raleway:light:size=13}${color FFFFFF}IP address: $alignr ${addr enp2s0}
+${font Raleway:light:size=13}${color FFFFFF}External IP: $alignr ${execi 3600 wget -O - http://ip.tupeux.com | tail}
+#ESSID: $alignr ${wireless_essid enp2s0}
+#Connection Quality: $alignr ${wireless_link_qual_perc enp2s0}%
+
+$alignr Download
+${downspeedgraph enp2s0}
+${downspeed enp2s0}/s $alignr ${totaldown enp2s0}
+
+$alignr Upload
+${upspeedgraph enp2s0}
+${upspeed enp2s0}/s $alignr ${totalup enp2s0}
